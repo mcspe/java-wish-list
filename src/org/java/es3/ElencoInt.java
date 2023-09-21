@@ -34,17 +34,29 @@ public class ElencoInt {
 		}
 	}
 	
-	public int getElementoSuccessivo() {
-		if (hasAncoraElementi())
-			return arrayInt[counter++];
-		else {
-			counter = 0;
-			return this.getElementoSuccessivo();
+	public int getElementoSuccessivo() throws Exception {
+		if (arrayInt != null) {
+			
+			if (hasAncoraElementi())
+				return arrayInt[counter++];
+			else {
+				counter = 0;
+				return this.getElementoSuccessivo();
+			}
+		} else {
+			
+			throw new Exception("ElencoInt Obj initilialized without values.");
 		}
 	}
 	
 	public boolean hasAncoraElementi() {
-		return (counter < arrayInt.length) ? true : false;
+		if (arrayInt != null) {
+			
+			return (counter < arrayInt.length) ? true : false;
+		} else {
+			
+			return false;
+		}
 	}
 	
  	public void setArrayInt(int[] arrayInt) {
