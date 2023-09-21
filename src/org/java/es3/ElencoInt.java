@@ -4,9 +4,34 @@ public class ElencoInt {
 	
 	private int[] arrayInt;
 	private int counter = 0;
+	
+	public ElencoInt() {
+		int[] init = null;
+		setArrayInt(init);
+	}
 
 	public ElencoInt(int[] arrayInt) {
 		setArrayInt(arrayInt);
+	}
+	
+	public void addElemento(int e) {
+		if (arrayInt != null) {
+			
+			int[] newArrayInt = new int[arrayInt.length + 1];
+			
+			for (int i = 0; i < arrayInt.length; i++) {
+				
+				newArrayInt[i] = arrayInt[i];
+			}
+			
+			newArrayInt[arrayInt.length] = e;
+			
+			setArrayInt(newArrayInt);
+		} else {
+			
+			int[] newArrayInt = {e};
+			setArrayInt(newArrayInt);
+		}
 	}
 	
 	public int getElementoSuccessivo() {
@@ -34,10 +59,17 @@ public class ElencoInt {
 	public String toString() {
 		
 		String res = "";
-		for (int i = 0; i < arrayInt.length; i++) {
+
+		if (arrayInt != null) {
 			
-			int c = arrayInt[i];
-			res += (i < arrayInt.length - 1) ? (c + " - ") : c;
+			for (int i = 0; i < arrayInt.length; i++) {
+				
+				int c = arrayInt[i];
+				res += (i < arrayInt.length - 1) ? (c + " - ") : c;
+			}
+		} else {
+			
+			res = "null";
 		}
 		
 		return res;		
